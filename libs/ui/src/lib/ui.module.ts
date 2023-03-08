@@ -4,8 +4,11 @@ import { ThreadsComponent } from './threads/threads.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateThreadComponent } from './create-thread/create-thread.component';
 
+import { ClarityModule } from '@clr/angular'
+
+
 @NgModule({
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, ClarityModule],
   declarations: [ThreadsComponent, CreateThreadComponent],
   exports: [ThreadsComponent, CreateThreadComponent],
 })

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ClarityModule } from '@clr/angular'
+import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
@@ -13,6 +14,8 @@ import { UiModule } from '@discussion-board/ui';
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
+    FormsModule,
+    ClarityModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     UiModule
   ],

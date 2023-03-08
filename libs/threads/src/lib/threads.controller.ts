@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { ThreadsService } from './threads.service';
+import { Thread } from '@prisma/client';
 
 @Controller('threads')
 export class ThreadsController {
@@ -8,5 +9,10 @@ export class ThreadsController {
   @Get() 
   public getThreads() {
     return this.threadsService.getThreads()
+  }
+
+  @Post()
+  public createThread(thread: Thread) {
+    this.threadsService.addThread(thread);
   }
 }

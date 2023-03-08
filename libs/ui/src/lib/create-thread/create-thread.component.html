@@ -1,1 +1,11 @@
-<p>create-thread works!</p>
+<form clrForm>
+    <clr-input-container>
+      <label>Titel</label>>
+      <input clrInput type="text" name="title" required/>
+    </clr-input-container>
+    <clr-textarea-container>
+        <label>Inhalt</label>
+        <textarea clrTextarea name="content" required></textarea>
+      </clr-textarea-container>
+      <button class="btn btn-primary" type="button" (click)="createPost()">Erstellen</button>
+  </form>

@@ -13,4 +13,8 @@ export class ThreadsService {
   public getThreads(): Observable<Thread[]> {
     return this.http.get<Thread[]>(`${this.API_URL}/threads`);
   }
+
+  public createThread(thread: Thread): void {
+    this.http.post(`${this.API_URL}/threads`, {body: thread});
+  }
 }

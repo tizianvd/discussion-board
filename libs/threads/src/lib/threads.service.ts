@@ -7,4 +7,8 @@ export class ThreadsService {
     public getThreads(): Promise<Thread[]> {
         return prisma.thread.findMany()
     }
+
+    public addThread(thread: Thread): void {
+        prisma.thread.create({data: thread});
+    }
 }
