@@ -1,0 +1,13 @@
+<div *ngFor="let thread of $threads | async">
+    <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+        <div class="clr-row">
+            <div class="card">
+                <h3 class="card-header">{{thread.title}}</h3>
+                <div class="card-block">
+                    {{thread.content}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<discussion-board-create-thread></discussion-board-create-thread>
