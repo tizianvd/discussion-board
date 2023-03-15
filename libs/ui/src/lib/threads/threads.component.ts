@@ -9,10 +9,10 @@ import { Thread } from '@prisma/client';
   styleUrls: ['./threads.component.scss'],
 })
 export class ThreadsComponent implements OnInit {
-  public $threads?: Observable<Thread[]>
+  public $threads?: Observable<Thread[]>;
   constructor(public threadService: ThreadsService) {}
 
   ngOnInit(): void {
-    this.$threads = this.threadService.getThreads();
+    this.$threads = this.threadService.getAllThreads();
   }
 }

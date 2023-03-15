@@ -9,13 +9,12 @@ import { Thread } from '@prisma/client';
 })
 export class CreateThreadComponent {
 
-  tmp: Thread = {id: "0", title: "Test", content: "bla"};
+  thread: Thread = {id: "0", title: "", content: ""};
   constructor(private threadService: ThreadsService) {
 
   }
 
   createPost(){
-    console.log("works")
-    this.threadService.createThread(this.tmp);
+    this.threadService.createThread(this.thread).subscribe();
   }
 }

@@ -2,17 +2,24 @@ import { Controller, Get, Logger, Post } from '@nestjs/common';
 import { ThreadsService } from './threads.service';
 import { Body } from '@nestjs/common/decorators';
 
-@Controller('threads')
+@Controller()
 export class ThreadsController {
   constructor(private threadsService: ThreadsService) {}
 
-  @Get() 
+  @Get('threads')
   public getThreads() {
-    return this.threadsService.getThreads()
+    return this.threadsService.getThreads();
   }
 
-  @Post()
-  public createThread(@Body() data) {
-    this.threadsService.createThread(data);
+  @Post('thread')
+  async createThread(@Body() data: { title: string; content: string }) {
+    const { title, content } = data;
+    const thread = await this.threadsService.createThread({
+      data: {
+        title,
+        content,
+      },
+    });
+    return thread;
   }
 }
