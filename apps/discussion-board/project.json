@@ -20,7 +20,7 @@
           "apps/discussion-board/src/assets"
         ],
         "styles": ["apps/discussion-board/src/styles.scss",
-                   "node_modules/@clr/ui/clr-ui.min.css"
+        "node_modules/@clr/ui/clr-ui.min.css"
       ],
         "scripts": []
       },

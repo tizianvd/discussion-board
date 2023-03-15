@@ -9,7 +9,7 @@ import { Thread } from '@prisma/client';
 })
 export class CreateThreadComponent {
 
-  thread: Thread = {id: "0", title: "", content: ""};
+  thread: Thread = {id: "0", title: "", content: "", createdAt: new Date, updatedAt: new Date};
   constructor(private threadService: ThreadsService) {
 
   }

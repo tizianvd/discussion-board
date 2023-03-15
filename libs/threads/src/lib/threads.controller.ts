@@ -1,4 +1,4 @@
-import { Controller, Get, Logger, Post } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 import { ThreadsService } from './threads.service';
 import { Body } from '@nestjs/common/decorators';
 
@@ -9,6 +9,11 @@ export class ThreadsController {
   @Get('threads')
   public getThreads() {
     return this.threadsService.getThreads();
+  }
+
+  @Get('thread/:id')
+  public getThread(@Param('id') id: string) {
+    return this.threadsService.getThread(id);
   }
 
   @Post('thread')
@@ -22,4 +27,16 @@ export class ThreadsController {
     });
     return thread;
   }
+
+  @Get('replys/:id')
+  public getReplys(@Param('id') id: string) {
+    return this.threadsService.getThreadReplies(id);
+  }
+
+  @Post('reply')
+  async createReply(@Body() data: { threadId: string; content: string }) {
+    const { threadId, content } = data;
+    return await this.threadsService.createThreadReply(threadId, content);
+  }
+
 }

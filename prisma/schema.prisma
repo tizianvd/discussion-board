@@ -10,9 +10,18 @@ datasource db {
   url      = "file:./discussion-board.db"
 }
 
+model ThreadReply {
+  id       Int     @id @default(autoincrement())
+  content  String
+  Thread   Thread? @relation(fields: [threadId], references: [id])
+  threadId String?
+}
 
 model Thread {
-   id String @id @default(cuid())
-   title  String
-   content String
+  id        String        @id @default(cuid())
+  title     String
+  content   String
+  replys    ThreadReply[]
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
 }
