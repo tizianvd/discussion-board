@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaClient, Thread } from '@prisma/client'
+import { Injectable, Logger } from '@nestjs/common';
+import { PrismaClient, Thread, Prisma } from '@prisma/client'
 
 const prisma = new PrismaClient()
 @Injectable()
@@ -8,7 +8,8 @@ export class ThreadsService {
         return prisma.thread.findMany()
     }
 
-    public addThread(thread: Thread): void {
-        prisma.thread.create({data: thread});
+    public createThread(data: Prisma.ThreadCreateInput): Promise<Thread> {
+        Logger.log(data)
+        return prisma.thread.create({data});
     }
 }

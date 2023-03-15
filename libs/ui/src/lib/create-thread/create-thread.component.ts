@@ -15,6 +15,7 @@ export class CreateThreadComponent {
   }
 
   createPost(){
+    console.log("works")
     this.threadService.createThread(this.tmp);
   }
 }

@@ -15,6 +15,7 @@ export class ThreadsService {
   }
 
   public createThread(thread: Thread): void {
-    this.http.post(`${this.API_URL}/threads`, {body: thread});
+    console.log(thread)
+    this.http.post(`${this.API_URL}/threads`, {thread: thread}).subscribe();
   }
 }
