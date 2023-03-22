@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ThreadsService } from '../../threads.service';
 
+
 @Component({
   selector: 'discussion-board-create-reply',
   templateUrl: './create-reply.component.html',

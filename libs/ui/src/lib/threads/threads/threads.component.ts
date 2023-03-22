@@ -1,6 +1,6 @@
 import { Component ,OnInit } from '@angular/core';
 import { ThreadsService } from '../threads.service';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Thread } from '@prisma/client';
 
 @Component({
@@ -13,6 +13,8 @@ export class ThreadsComponent implements OnInit {
   constructor(public threadService: ThreadsService) {}
 
   ngOnInit(): void {
-    this.$threads = this.threadService.getAllThreads();
+    this.$threads = this.threadService.getAllThreads().pipe(
+      map((data) => data = data.reverse())
+    )
   }
 }

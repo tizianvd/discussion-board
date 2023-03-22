@@ -1,18 +1,24 @@
-<form clrForm clrLayout="horizontal">
-  <clr-textarea-container>
-    <textarea
-      clrTextarea
-      name="content"
-      [(ngModel)]="content"
-      required
-    ></textarea>
-  </clr-textarea-container>
+<form>
+<div class="grid p-fluid">
+  <div class="col-12 md:col-4">
+    <div class="p-inputgroup">
+      <textarea
+        pTextarea
+        name="content"
+        [(ngModel)]="content"
+        required
+      ></textarea>
+    </div>
+  </div>
+
   <button
-    class="btn btn-primary"
+    pButton
     type="button"
     [disabled]="!content.length"
     (click)="createReply()"
+    label="Erstellen"
   >
-    Erstellen
+    
   </button>
+</div>
 </form>

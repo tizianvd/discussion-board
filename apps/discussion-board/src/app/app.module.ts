@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-//import { ClarityModule } from '@clr/angular'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ClarityModule } from '@clr/angular'
 import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 
 import { UiModule } from '@discussion-board/ui';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
-   // ClarityModule,
+    ClarityModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
     UiModule
   ],

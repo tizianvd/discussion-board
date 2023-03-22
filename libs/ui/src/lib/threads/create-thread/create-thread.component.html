@@ -1,12 +1,27 @@
-<form clrForm>
-  <clr-input-container>
-    <label>Titel</label>
-    <input clrInput type="text" name="title" [(ngModel)]="thread.title" required />
-  </clr-input-container>
-  <clr-textarea-container>
-    <label>Inhalt</label>
-    <textarea clrTextarea name="content" [(ngModel)]="thread.content" required></textarea>
-  </clr-textarea-container>
-  <button class="btn btn-primary" type="button" [disabled]="!thread.title.length || !thread.content.length"
-    (click)="createPost()">Erstellen</button>
-</form>
+<div class="formContainer">
+  <h3>Topic erstellen</h3>
+  <form>
+    <div class="grid p-fluid">
+      <div class="col-12 md:col-4">
+        <div class="p-inputgroup">
+          <input name="title" type="text" pInputText placeholder="Titel" [(ngModel)]="thread.title" required />
+        </div>
+      </div>
+
+      <div class="col-12 md:col-4">
+        <div class="p-inputgroup">
+          <textarea name="contentArea" pInputTextarea [(ngModel)]="thread.content" placeholder="Inhalt"
+            required></textarea>
+        </div>
+      </div>
+
+    </div>
+        <button pButton class="createButton" type="button" [disabled]="!thread.title.length || !thread.content.length"
+          (click)="createPost()" label="Erstellen">
+        </button>
+
+        <button pButton class="p-button-danger" type="button" label="Abbrechen"
+          (click)="cancel()">
+        </button>
+  </form>
+</div>

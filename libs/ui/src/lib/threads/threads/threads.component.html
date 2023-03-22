@@ -1,26 +1,25 @@
-<div class="clr-row">
-    <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
-        <div class="card">
-            <div class="card-block">
-                <button class="btn btn-primary createButton" [routerLink]="['../create-thread']">Erstellen</button>
+<p-card>
+    <ng-template pTemplate="header">
+        <h2 class="cardHeader">
+            Topics
+            <button pButton type="button" class="createButton" [routerLink]="['../create-thread']">Erstellen</button>
+        </h2>    
+    </ng-template>
 
-                <div *ngIf="$threads">
-                    <table class="table table-compact table-noborder">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Datum</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let thread of $threads | async">
-                                <td><a routerLink="/thread/{{thread.id}}">{{thread.title}}</a></td>
-                                <td>{{thread.createdAt | date}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+    <div *ngIf="($threads | async) as threads">
+        <p-table [value]="threads">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Title</th>
+                    <th>Datum</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-thread>
+                <tr>
+                    <td><a routerLink="/thread/{{thread.id}}">{{thread.title}}</a></td>
+                    <td>{{thread.createdAt | date:'short'}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
     </div>
-</div>
+</p-card>

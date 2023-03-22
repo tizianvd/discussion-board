@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ThreadsService } from '../threads.service';
 import { Thread } from '@prisma/client';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'discussion-board-create-thread',
@@ -10,11 +11,17 @@ import { Thread } from '@prisma/client';
 export class CreateThreadComponent {
 
   thread: Thread = {id: "0", title: "", content: "", createdAt: new Date, updatedAt: new Date};
-  constructor(private threadService: ThreadsService) {
+  constructor(private threadService: ThreadsService,
+              private _location: Location) {
 
   }
 
   createPost(){
     this.threadService.createThread(this.thread).subscribe();
+    this._location.back();
+  }
+
+  cancel() {
+    this._location.back();
   }
 }

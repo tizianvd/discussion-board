@@ -5,10 +5,23 @@ import { FormsModule } from '@angular/forms';
 import { ThreadsComponent } from './threads/threads/threads.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateThreadComponent } from './threads/create-thread/create-thread.component';
+import {MenubarModule} from 'primeng/menubar';
+import {ButtonModule} from 'primeng/button';
+import {InputTextModule} from 'primeng/inputtext';
+import {TableModule} from 'primeng/table';
+import {CardModule} from 'primeng/card';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+
+
+
+
 
 import { ClarityModule } from '@clr/angular';
 import { ThreadComponent } from './threads/thread/thread.component';
 import { CreateReplyComponent } from './threads/thread/create-reply/create-reply.component';
+import { LoginComponent } from './users/login/login.component';
+import { HeaderComponent } from './main/header/header.component';
+import { CoreComponent } from './main/core/core.component';
 
 @NgModule({
   imports: [
@@ -16,6 +29,12 @@ import { CreateReplyComponent } from './threads/thread/create-reply/create-reply
     HttpClientModule,
     FormsModule,
     RouterModule,
+    MenubarModule,
+    ButtonModule,
+    InputTextModule,
+    InputTextareaModule,
+    TableModule,
+    CardModule,
     ClarityModule,
   ],
   declarations: [
@@ -23,12 +42,16 @@ import { CreateReplyComponent } from './threads/thread/create-reply/create-reply
     CreateThreadComponent,
     ThreadComponent,
     CreateReplyComponent,
+    LoginComponent,
+    HeaderComponent,
+    CoreComponent,
   ],
   exports: [
     ThreadsComponent,
     CreateThreadComponent,
     ThreadComponent,
     CreateReplyComponent,
+    CoreComponent,
   ],
 })
 export class UiModule {}
