@@ -4,11 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { ThreadsController, ThreadsService } from '@discussion-board/threads';
-import { UserController, UserService } from '@discussion-board/user';
 
 @Module({
   imports: [],
-  controllers: [AppController, ThreadsController, UserController],
-  providers: [AppService, ThreadsService, UserService],
+  controllers: [AppController, ThreadsController],
+  providers: [AppService, ThreadsService],
 })
 export class AppModule {}

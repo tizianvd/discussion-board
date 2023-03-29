@@ -15,10 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@discussion-board/auth": ["libs/auth/src/index.ts"],
       "@discussion-board/threads": ["libs/threads/src/index.ts"],
       "@discussion-board/ui": ["libs/ui/src/index.ts"],
-      "@discussion-board/user": ["libs/user/src/index.ts"]
+      "@discussion-board/user-authentication": [
+        "libs/user-authentication/src/index.ts"
+      ],
+      "@discussion-board/users": ["libs/users/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

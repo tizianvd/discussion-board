@@ -1,21 +1,21 @@
 {
-  "name": "auth",
+  "name": "user-authentication",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/auth/src",
+  "sourceRoot": "libs/user-authentication/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/auth/**/*.ts"]
+        "lintFilePatterns": ["libs/user-authentication/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/auth/jest.config.ts",
+        "jestConfig": "libs/user-authentication/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
