@@ -17,9 +17,6 @@
     "paths": {
       "@discussion-board/threads": ["libs/threads/src/index.ts"],
       "@discussion-board/ui": ["libs/ui/src/index.ts"],
-      "@discussion-board/user-authentication": [
-        "libs/user-authentication/src/index.ts"
-      ],
       "@discussion-board/users": ["libs/users/src/index.ts"]
     }
   },

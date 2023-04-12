@@ -1,7 +1,9 @@
 import { Controller, Get, Param, Post } from '@nestjs/common';
 import { ThreadsService } from './threads.service';
 import { Body } from '@nestjs/common/decorators';
+import { ApiTags } from'@nestjs/swagger'
 
+@ApiTags("thread")
 @Controller()
 export class ThreadsController {
   constructor(private threadsService: ThreadsService) {}

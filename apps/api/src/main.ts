@@ -27,6 +27,7 @@ async function bootstrap() {
   .setTitle('Discussion Board')
   .setDescription('The Discussion Board description')
   .setVersion('1.0')
+  .addBearerAuth()
   .addTag('discussion-board')
   .build();
 
