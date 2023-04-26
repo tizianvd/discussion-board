@@ -21,7 +21,7 @@ model Thread {
   id        String        @id @default(cuid())
   title     String
   content   String
-  user      User? @relation(fields: [userId], references: [id])
+  User      User? @relation(fields: [userId], references: [id])
   userId    Int?
   replys    ThreadReply[]
   createdAt DateTime      @default(now())

@@ -33,7 +33,7 @@ export class ThreadsService {
       data : {
         title: title,
         content: content,
-        user: {
+        User: {
           connect: {
             id: userid,
           },
