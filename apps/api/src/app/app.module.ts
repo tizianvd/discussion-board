@@ -3,12 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { ThreadsController, ThreadsService } from '@discussion-board/threads';
-import { AuthController, AuthService, LocalStrategy, UsersController, UsersService} from '@discussion-board/users'
-import { JwtService } from '@nestjs/jwt';
+import { AuthController, AuthModule, UsersController, UsersModule} from '@discussion-board/users'
 
 @Module({
-  imports: [],
-  controllers: [AppController, ThreadsController, AuthController, UsersController],
-  providers: [AppService, ThreadsService, AuthService, JwtService, UsersService, LocalStrategy],
+  imports: [AuthModule, UsersModule],
+  controllers: [AppController, ThreadsController, UsersController],
+  providers: [AppService, ThreadsService],
 })
 export class AppModule {}

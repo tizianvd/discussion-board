@@ -1,15 +1,10 @@
 import { Module } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
-import { APP_GUARD } from '@nestjs/core';
-import { LocalAuthGuard } from '../auth/local-auth-guard';
+import { JwtStrategy } from '../auth/jwt.strategy';
 @Module({
   controllers: [UsersController],
-  providers: [UsersService,
-    {
-        provide: APP_GUARD,
-        useClass: LocalAuthGuard,
-      },],
+  providers: [UsersService, JwtStrategy],
   // imports: [PrismaModule],
   exports: [UsersService],
 })

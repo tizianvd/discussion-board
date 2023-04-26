@@ -15,23 +15,32 @@ const prisma = new PrismaClient();
 @Injectable()
 export class AuthService {
   constructor(private jwtService: JwtService) {}
-  async login(login: string, password: string): Promise<AuthEntity> {
+  async validateUser(login: string, password: string) {
     const user = await prisma.user.findUnique({ where: { login: login } });
 
     Logger.log(`Login: ${login} password:${password}`);
 
     if (!user) {
-      throw new NotFoundException(`No user found for login: ${login}`);
+      return null;
     }
 
     const isPasswordValid = compare(user.password, password);
 
     if (!isPasswordValid) {
-      throw new UnauthorizedException('Invalid password');
+      return null;
     }
 
+    return user;
+  }
+  async login(user: any): Promise<AuthEntity> {
+    Logger.log(user.username);
+    const payload = {
+      login: user.login,
+      sub: user.id,
+    };
+
     return {
-      accessToken: this.jwtService.sign({ login: user.login },  {secret: process.env.SECRETKEY}),
+      accessToken: this.jwtService.sign(payload),
     };
   }
   async register(data: CreateUserDto) {

@@ -11,14 +11,14 @@ import { UsersService } from './users.service';
 import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { UserEntity } from '../entity/user.entity';
 import { UserUpdateDto } from '../auth/dto/user-update.dto';
-import { LocalAuthGuard } from '../auth/local-auth-guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('users')
 @ApiTags('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @UseGuards(LocalAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @Get()
   @ApiOkResponse({ type: UserEntity, isArray: true })
@@ -27,7 +27,7 @@ export class UsersController {
     return users.map((user) => new UserEntity(user));
   }
 
-  @UseGuards(LocalAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @Get(':id')
   @ApiOkResponse({ type: UserEntity })
@@ -36,7 +36,7 @@ export class UsersController {
   }
 
   @Patch(':id')
-  @UseGuards(LocalAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiCreatedResponse({ type: UserEntity })
   async update(
@@ -47,7 +47,7 @@ export class UsersController {
   }
 
   @Delete(':id')
-  @UseGuards(LocalAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOkResponse({ type: UserEntity })
   async remove(@Param('login') login: string) {

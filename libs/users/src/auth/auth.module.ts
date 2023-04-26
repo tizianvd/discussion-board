@@ -13,11 +13,12 @@ import { LocalStrategy } from './local.strategy';
     PassportModule,
     JwtModule.register({
       secret: process.env.SECRETKEY,
-      signOptions: { expiresIn: '5m' }, 
+      signOptions: { expiresIn: '1h' }, 
     }),
-    UsersModule,
+    //UsersModule,
   ],
-  controllers: [AuthController, PassportModule],
+  controllers: [AuthController],
   providers: [AuthService, LocalStrategy],
+  //exports: [AuthService, LocalStrategy],
 })
 export class AuthModule {}
