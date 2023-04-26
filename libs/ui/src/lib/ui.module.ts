@@ -5,16 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { ThreadsComponent } from './threads/threads/threads.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateThreadComponent } from './threads/create-thread/create-thread.component';
-import {MenubarModule} from 'primeng/menubar';
-import {ButtonModule} from 'primeng/button';
-import {InputTextModule} from 'primeng/inputtext';
-import {TableModule} from 'primeng/table';
-import {CardModule} from 'primeng/card';
-import {InputTextareaModule} from 'primeng/inputtextarea';
-
-
-
-
+import { MenubarModule } from 'primeng/menubar';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
+import { CardModule } from 'primeng/card';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { MessageModule } from 'primeng/message';
 
 import { ClarityModule } from '@clr/angular';
 import { ThreadComponent } from './threads/thread/thread.component';
@@ -22,6 +19,7 @@ import { CreateReplyComponent } from './threads/thread/create-reply/create-reply
 import { LoginComponent } from './users/login/login.component';
 import { HeaderComponent } from './main/header/header.component';
 import { CoreComponent } from './main/core/core.component';
+import { LoginWidgetComponent } from './users/login/login-widget/login-widget.component';
 
 @NgModule({
   imports: [
@@ -35,6 +33,7 @@ import { CoreComponent } from './main/core/core.component';
     InputTextareaModule,
     TableModule,
     CardModule,
+    MessageModule,
     ClarityModule,
   ],
   declarations: [
@@ -45,6 +44,7 @@ import { CoreComponent } from './main/core/core.component';
     LoginComponent,
     HeaderComponent,
     CoreComponent,
+    LoginWidgetComponent,
   ],
   exports: [
     ThreadsComponent,

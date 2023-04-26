@@ -21,6 +21,8 @@ model Thread {
   id        String        @id @default(cuid())
   title     String
   content   String
+  user      User? @relation(fields: [userId], references: [id])
+  userId    Int?
   replys    ThreadReply[]
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
@@ -31,5 +33,6 @@ model User {
   login     String  @unique
   password String
   name  String
+  threads Thread[]
   createdAt DateTime      @default(now())
 }

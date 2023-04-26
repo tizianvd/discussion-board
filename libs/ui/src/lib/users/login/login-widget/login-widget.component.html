@@ -1,0 +1,9 @@
+<div *ngIf="!session;else loggedIn">
+    <input type="text" pInputText placeholder="Username" [(ngModel)]="username">
+    <input type="text" pInputText placeholder="Password" [(ngModel)]="password">
+    <button pButton type="button" (click)="login()">Anmelden</button>
+</div>
+<ng-template #loggedIn>
+    <h3>Logged in as: {{session?.login}}</h3>
+    <button pButton type="button" class="logoutButton" (click)="logout()">Abmelden</button>
+</ng-template>

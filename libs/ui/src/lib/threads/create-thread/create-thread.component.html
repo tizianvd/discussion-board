@@ -4,19 +4,19 @@
     <div class="grid p-fluid">
       <div class="col-12 md:col-4">
         <div class="p-inputgroup">
-          <input name="title" type="text" pInputText placeholder="Titel" [(ngModel)]="thread.title" required />
+          <input name="title" type="text" pInputText placeholder="Titel" [(ngModel)]="title" required />
         </div>
       </div>
 
       <div class="col-12 md:col-4">
         <div class="p-inputgroup">
-          <textarea name="contentArea" pInputTextarea [(ngModel)]="thread.content" placeholder="Inhalt"
+          <textarea name="contentArea" pInputTextarea [(ngModel)]="content" placeholder="Inhalt"
             required></textarea>
         </div>
       </div>
 
     </div>
-        <button pButton class="createButton" type="button" [disabled]="!thread.title.length || !thread.content.length"
+        <button pButton class="createButton" type="button" [disabled]="!title.length || !content.length"
           (click)="createPost()" label="Erstellen">
         </button>
 

@@ -24,11 +24,22 @@ export class ThreadsService {
     });
   }
 
-  public async createThread(params: {
-    data: Prisma.ThreadCreateInput;
-  }): Promise<Thread> {
-    const { data } = params;
-    return await prisma.thread.create({ data });
+  public async createThread(
+    title: string,
+    content: string,
+    userid: number
+  ): Promise<Thread> {
+    return await prisma.thread.create({  
+      data : {
+        title: title,
+        content: content,
+        user: {
+          connect: {
+            id: userid,
+          },
+        }
+      }
+    });
   }
 
   public async createThreadReply(

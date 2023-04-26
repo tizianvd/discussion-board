@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Thread, ThreadReply } from '@prisma/client';
 import { Observable, BehaviorSubject, tap } from 'rxjs';
+import { SessionService } from '../session.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class ThreadsService {
   private API_URL = 'http://localhost:3333/api';
   private _threads: BehaviorSubject<Thread[]>;
   private _threadReplys: BehaviorSubject<ThreadReply[]>
-  constructor(private readonly http: HttpClient) {
+  constructor(private readonly http: HttpClient, private readonly sessionService: SessionService) {
     this._threads = new BehaviorSubject<Thread[]>([]);
     this._threadReplys = new BehaviorSubject<ThreadReply[]>([]);
   }
@@ -24,11 +25,13 @@ export class ThreadsService {
     return this.http.get<Thread>(`${this.API_URL}/thread/${id}`);
   }
 
-  public createThread(thread: Thread) {
+  public createThread(title: string, content: string) {
+    const session = this.sessionService.getSession();
     return this.http
       .post(`${this.API_URL}/thread`, {
-        title: thread.title,
-        content: thread.content,
+        title: title,
+        content: content,
+        userid: session?.sub,
       })
       .pipe(tap(() => this._getAllThreads()));
   }

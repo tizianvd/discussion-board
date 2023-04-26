@@ -5,31 +5,29 @@
 import { AppModule } from './app/app.module';
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import session from "express-session";
-import * as passport from "passport"
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
-
+import session from 'express-session';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  app.enableCors()
+  app.enableCors();
   app.use(
     session({
       secret: 'keyboard',
       resave: false,
-      saveUninitialized: false
+      saveUninitialized: false,
     })
-  )
+  );
 
   const config = new DocumentBuilder()
-  .setTitle('Discussion Board')
-  .setDescription('The Discussion Board description')
-  .setVersion('1.0')
-  .addBearerAuth()
-  .addTag('discussion-board')
-  .build();
+    .setTitle('Discussion Board')
+    .setDescription('The Discussion Board description')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .addTag('discussion-board')
+    .build();
 
   const port = process.env.PORT || 3333;
   const document = SwaggerModule.createDocument(app, config);

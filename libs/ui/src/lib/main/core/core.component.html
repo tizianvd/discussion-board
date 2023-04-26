@@ -1,4 +1,9 @@
 <discussion-board-header></discussion-board-header>
-<div class="content">
+<ng-template #loggedOut>
+    <div>
+        <p-message severity="error" text="Please log in."></p-message>
+    </div>
+</ng-template>
+<div class="content" *ngIf="session;else loggedOut">
     <router-outlet></router-outlet>
 </div>

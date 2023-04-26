@@ -1,9 +1,9 @@
 import { Controller, Get, Param, Post } from '@nestjs/common';
 import { ThreadsService } from './threads.service';
 import { Body } from '@nestjs/common/decorators';
-import { ApiTags } from'@nestjs/swagger'
+import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags("thread")
+@ApiTags('thread')
 @Controller()
 export class ThreadsController {
   constructor(private threadsService: ThreadsService) {}
@@ -19,14 +19,15 @@ export class ThreadsController {
   }
 
   @Post('thread')
-  async createThread(@Body() data: { title: string; content: string }) {
-    const { title, content } = data;
-    const thread = await this.threadsService.createThread({
-      data: {
-        title,
-        content,
-      },
-    });
+  async createThread(
+    @Body() data: { title: string; content: string; userId: number }
+  ) {
+    const { title, content, userId } = data;
+    const thread = await this.threadsService.createThread(
+      title,
+      content,
+      userId
+    );
     return thread;
   }
 
@@ -40,5 +41,4 @@ export class ThreadsController {
     const { threadId, content } = data;
     return await this.threadsService.createThreadReply(threadId, content);
   }
-
 }

@@ -10,14 +10,15 @@ import { Location } from '@angular/common';
 })
 export class CreateThreadComponent {
 
-  thread: Thread = {id: "0", title: "", content: "", createdAt: new Date, updatedAt: new Date};
+  title = "";
+  content = "";
   constructor(private threadService: ThreadsService,
               private _location: Location) {
 
   }
 
   createPost(){
-    this.threadService.createThread(this.thread).subscribe();
+    this.threadService.createThread(this.title, this.content).subscribe();
     this._location.back();
   }
 

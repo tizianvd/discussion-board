@@ -4,8 +4,6 @@
        <h3><a [routerLink]="['../threads']">Board</a></h3>
     </ng-template>
     <ng-template pTemplate="end">
-        <input type="text" pInputText placeholder="Username">
-        <input type="text" pInputText placeholder="Password">
-        <button pButton type="button">Anmelden</button>
+        <discussion-board-login-widget></discussion-board-login-widget>
     </ng-template>
 </p-menubar>
